@@ -55,9 +55,9 @@ h1 {
     rotate: 90deg;
 }
 .player {
-    background: url('blue-car-top-view.svg') center no-repeat;
+    background: url('blue-car-top-view-icon-14.png') center no-repeat;
     background-size: contain;
-    rotate: 270deg;
+    rotate: 90deg;
 }
 .result {
     display: flex;
