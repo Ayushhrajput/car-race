@@ -2,6 +2,7 @@ const gridLayout = document.querySelector('.grid')
 let moveCarId 
 let scoreDisplay = document.querySelector('.score')
 const res = document.querySelector('.res')
+const play = document.querySelector('.play')
 let score = 0
 const width = 5
 const height = 8
@@ -37,10 +38,13 @@ function draw() {
     
     setInterval(moveaMargin, nitro);
 }
-let MarginId = setInterval(draw, 400);
 
-
-function cars() {
+play.addEventListener('click', () => {
+    let MarginId = setInterval(draw, 400);
+    const carsId = setInterval(cars, 400);
+    res.innerHTML = 'score'
+    score = 0
+    function cars() {
         let path = Math.floor(Math.random()*width)
         let currPathIdx = path;
         squares[currPathIdx].classList.add('car')
@@ -54,13 +58,12 @@ function cars() {
                 
             clearInterval(carsId)
             clearInterval(MarginId)
-            res.innerHTML = 'score'
         }
 
         }
         score += 100
         scoreDisplay.innerHTML = score 
-        
+
 
         moveCarId = setInterval(moveCar, nitro); 
         setTimeout(() => (
@@ -68,10 +71,12 @@ function cars() {
             
             
         ), 40000);   
+        setTimeout(() => {
+            clearInterval(MarginId)
+        }, 40000);
         
-}
-const carsId = setInterval(cars, 400);
-
+    }
+})
 
 
 function moveLeft(){
@@ -109,11 +114,13 @@ function moveDown(){
 function Nitro() {
     while(nitro>50){
         nitro -= 25
+        score += 25
     }
 }
 function Stop() {
     while(nitro<140){
         nitro +=25
+        score -= 25
     }
 }
 function playerMove(e) {
