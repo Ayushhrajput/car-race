@@ -12,12 +12,12 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100dvh;
-    background: rgb(0, 162, 255);
+    background: linear-gradient(rgb(54, 54, 54), rgb(0, 0, 0));
 }
 .grid {
     width: 200px;
     height: 320px;
-    background: #272626;
+    background: #726d6d;
     display: flex;
     flex-wrap: wrap;
 }
@@ -29,7 +29,7 @@ body{
 .grass {
     width: 50px;
     height: 320px;
-    background: #52504e;
+    background: #0be70b;
 }
 h1 {
     margin: 0;
@@ -52,7 +52,7 @@ h1 {
 .car {
     background: url('R.svg') center no-repeat ;
     background-size: contain;
-    rotate: 90deg;
+    rotate: 270deg;
 }
 .player {
     background: url('blue-car-top-view-icon-14.png') center no-repeat;
@@ -67,8 +67,8 @@ h1 {
 .control {
     width: 200px;
     height: 200px;
-    background: rgb(0, 0, 0, 0.4);
-    border-radius: 50%;
+    
+    border-radius: 10px;
     margin: 4px;
     position: relative;
 }
@@ -100,4 +100,31 @@ h1 {
     bottom: 0;
     right: 50%;
     transform: translate(50%);
+}
+.console {
+    display: flex;
+    background: #161616;
+    color: rgb(255, 255, 255);
+    border-radius: 16px;
+    margin: 4px;
+    padding: 4px;
+}
+.nitro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+}
+.nitro div {
+    background: rgb(255, 255, 255);
+    color: black;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    align-content: center;
+    text-align: center;
+    font-size:10px;
+    cursor: pointer;
 }

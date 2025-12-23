@@ -9,6 +9,9 @@ const l = document.querySelector('.l')
 const t = document.querySelector('.t')
 const r = document.querySelector('.r')
 const d = document.querySelector('.d')
+const nitroUp = document.querySelector('.nitro-up')
+const stop = document.querySelector('.stop')
+let nitro = 125
 
 for(let i=0; i<width*height; i++){
     const grid = document.createElement('div')
@@ -17,25 +20,28 @@ for(let i=0; i<width*height; i++){
 
 const squares = Array.from(document.querySelectorAll('.grid div'))
 
-let playerIdx = 36
+let playerIdx = 31
 squares[playerIdx].classList.add('player')
 
-const margin = []
+let marginIdx = Math.floor(width/2)
+
+
 function draw() {
+    let marginIdx = Math.floor(width/2)
+    squares[marginIdx].classList.add('margin')
+    function moveaMargin(){
+        squares[marginIdx].classList.remove('margin')
+        marginIdx +=width
+        squares[marginIdx].classList.add('margin')
+    }
     
-        for(let i=0; i<squares.length; i++){
-            
-            if(i%width == 2 && i%2 == 0){
-                squares[i].classList.add('margin')
-                console.log(squares[i])
-            }
-        }
+    setInterval(moveaMargin, nitro);
 }
-draw()
+let MarginId = setInterval(draw, 400);
 
 
 function cars() {
-        let path = Math.floor(Math.random()*5)
+        let path = Math.floor(Math.random()*width)
         let currPathIdx = path;
         squares[currPathIdx].classList.add('car')
         
@@ -44,26 +50,28 @@ function cars() {
             currPathIdx += width
             squares[currPathIdx].classList.add('car')
 
+            if(squares[playerIdx].classList.contains('car')){
+                
+            clearInterval(carsId)
+            clearInterval(MarginId)
+            res.innerHTML = 'score'
+        }
+
         }
         score += 100
         scoreDisplay.innerHTML = score 
         
 
-        moveCarId = setInterval(moveCar, 100); 
+        moveCarId = setInterval(moveCar, nitro); 
         setTimeout(() => (
             clearInterval(carsId)
             
             
-        ), 60000);   
+        ), 40000);   
         
-        
-        if(squares[playerIdx].classList.contains('car')){
-            
-            clearInterval(carsId)
-            res.innerHTML = 'score'
-        }
 }
 const carsId = setInterval(cars, 400);
+
 
 
 function moveLeft(){
@@ -98,16 +106,30 @@ function moveDown(){
         squares[playerIdx].classList.add('player')
     }
 }
+function Nitro() {
+    while(nitro>50){
+        nitro -= 25
+    }
+}
+function Stop() {
+    while(nitro<140){
+        nitro +=25
+    }
+}
 function playerMove(e) {
     
-    if(e.key == 'ArrowLeft'){
+    if(e.key == 'a'){
         moveLeft() 
-    } else if(e.key == 'ArrowRight'){
+    } else if(e.key == 'd'){
         moveRight()  
-    } else if(e.key == 'ArrowUp'){
+    } else if(e.key == 'w'){
         moveUP()
-    } else if(e.key == 'ArrowDown'){
+    } else if(e.key == 's'){
         moveDown()
+    } else if(e.key == 'ArrowUp'){
+        Nitro()
+    } else if(e.key == 'ArrowDown'){
+        Stop()
     }
     
 }
@@ -123,6 +145,12 @@ t.addEventListener('click', () => {
 })
 d.addEventListener('click', () => {
     moveDown()
+})
+nitroUp.addEventListener('click', () => {
+    Nitro()
+})
+stop.addEventListener('click', () => {
+    Stop()
 })
 
 
