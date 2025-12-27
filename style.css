@@ -32,9 +32,9 @@ body{
 
 .topbox {
     color: #ffffff;
-    width: 400px;
     background: linear-gradient(#000, #1b1919);
-    
+    padding: 4px;
+    width: 370px;
 
 }
 h1 {
@@ -146,7 +146,7 @@ h1 {
     cursor: pointer;
 }
 .bottombox {
-    width: 400px;
+    width: 370px;
     background: linear-gradient(#000, #161515);
     display: flex;
     justify-content: center;
@@ -158,7 +158,7 @@ h1 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: rgb(255, 255, 255);
     border-radius: 16px;
-    width: 380px;
+    width: 350px;
     height: 75px;
     margin: 4px;
     box-shadow: 0px 5px 5px rgba(99, 98, 98, 0.1);
