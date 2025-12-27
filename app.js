@@ -42,7 +42,7 @@ function draw() {
 play.addEventListener('click', () => {
     let MarginId = setInterval(draw, 400);
     const carsId = setInterval(cars, 400);
-    res.innerHTML = 'score'
+    res.innerHTML = 'score - '
     score = 0
     function cars() {
         let path = Math.floor(Math.random()*width)
